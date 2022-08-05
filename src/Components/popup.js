@@ -25,7 +25,7 @@ function Popup({name, des,price}) {
     </div>
         
 
-    <div className='close' onClick={()=>setClose(true)}>
+    <div className='close add' onClick={()=>setClose(true)}>
                    Add More 
                     </div>
     </div>

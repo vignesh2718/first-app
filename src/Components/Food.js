@@ -3,10 +3,13 @@ import React , {useState} from "react";
 import Popup from "./popup.js";
 
 function FoodCard(props){
-
+    // const handlePopup = () =>{
+    //     setShowPopup(!showPopup);
+    //     console.log("Button clicked");
+    // }
     const [showPopup, setShowPopup] = useState(false);
-  
-    
+     
+    const[value, setValue] = useState( 0);
     
     function CheckOrder(){
 setShowPopup(true);
@@ -21,10 +24,15 @@ else{
     console.log("Your Order: "+props.name);
 }
     }
+   function addValue(){
+    setValue(value+1);
+   }
+ 
+    
 
 return(
     <div className="food-container">
-        {showPopup && <Popup name={props.name} des={props.des} price={props.price} close={setShowPopup}/>}
+        {showPopup && <Popup name={props.name} des={props.des} price={props.price} close={()=>setShowPopup}/>}
     <div className="food-header">
         <img src={props.img} className="food-img" alt="food-img" ></img>
 
@@ -32,8 +40,9 @@ return(
     <p className="food-name">{props.name} </p>
     <p className="food-des">{props.des}</p>
     <p className="food-price">{props.price}</p>
-    <button className="btn" onClick={CheckOrder}>Order Now!</button>
+    <button className="btn" onClick={function(event){addValue(); CheckOrder(); }} >Order Now  ({value})</button>
     </div>
+
 );
 }
 
